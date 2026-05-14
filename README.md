@@ -1,209 +1,200 @@
-# Breast Cancer Detection Project
+# 🩺 Breast Cancer Detector — Full-Stack AI Application
 
-An AI-powered machine learning system for detecting breast cancer using clinical tabular data. This project implements multiple classification algorithms with comprehensive model evaluation, comparison, and real-time prediction capabilities.
+> AI-powered breast cancer diagnosis from cell nucleus measurements using machine learning.
 
-## 🎯 Project Overview
-
-This project develops and evaluates multiple machine learning models to predict breast cancer diagnosis from clinical features. It includes data preprocessing, model training, hyperparameter tuning, performance evaluation with ROC-AUC analysis, and a deployment-ready prediction interface.
-
-**Dataset:** Wisconsin Diagnostic Breast Cancer (WDBC) dataset with 30 clinical features derived from cell nuclei measurements.
-
-## 📁 Project Structure
-
-```
-├── data/
-│   ├── raw/                    # Original datasets
-│   ├── processed/              # Cleaned and preprocessed data
-│   └── input/
-│       └── patients.csv        # Patient data for predictions
-├── notebooks/
-│   └── 01_tabular_baseline.ipynb    # EDA and baseline model
-├── src/
-│   ├── train.py                # Model training pipeline
-│   ├── evaluate.py             # Model evaluation metrics
-│   ├── model.py                # Model definitions and utilities
-│   ├── data_preprocessing.py    # Data cleaning and feature engineering
-│   ├── predict_csv.py          # Batch prediction from CSV
-│   ├── manual_predict_dynamic.py # Interactive predictions
-│   ├── models/                 # Pre-trained model files
-│   │   ├── logistic_regression.joblib
-│   │   ├── decision_tree.joblib
-│   │   ├── random_forest.joblib
-│   │   ├── k-nearest_neighbors.joblib
-│   │   ├── support_vector_machine_(svm).joblib
-│   │   └── neural_network.joblib
-│   ├── scaler.joblib           # Fitted feature scaler
-│   └── best_model.joblib       # Best performing model
-├── reports/
-│   ├── figures/                # Visualization outputs
-│   └── model_metrics_summary.csv # Performance comparison
-├── tests/                      # Unit tests
-├── requirements.txt            # Python dependencies
-└── README.md                   # This file
-```
-
-## 🔧 Setup & Installation
-
-### Prerequisites
-- Python 3.8+
-- pip or conda
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd breast-cancer-project
-```
-
-2. Create and activate a virtual environment:
-```bash
-# Windows
-python -m venv .venv
-.venv\Scripts\activate
-
-# macOS/Linux
-python -m venv .venv
-source .venv/bin/activate
-```
-
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-## 🚀 Quick Start
-
-### Train Models
-```bash
-python src/train.py
-```
-
-### Evaluate Models
-```bash
-python src/evaluate.py
-```
-
-### Make Predictions
-```bash
-# Batch predictions from CSV
-python src/predict_csv.py --input data/input/patients.csv
-
-# Interactive prediction
-python src/manual_predict_dynamic.py
-```
-
-### Explore Analysis
-```bash
-jupyter notebook notebooks/01_tabular_baseline.ipynb
-```
-
-## 📊 Models Implemented
-
-| Model | Training Time | Accuracy | ROC-AUC |
-|-------|---------------|----------|---------|
-| Logistic Regression | Fast | High | Good |
-| Decision Tree | Very Fast | High | Good |
-| Random Forest | Moderate | Very High | Excellent |
-| K-Nearest Neighbors | Fast | High | Good |
-| Support Vector Machine | Moderate | Very High | Excellent |
-| Neural Network | Slow | Very High | Excellent |
-
-*See `model_metrics_summary.csv` for detailed performance metrics*
-
-## 📈 Features
-
-- **Data Preprocessing**: Standardization, missing value handling, and feature scaling
-- **Multiple Algorithms**: 6 different ML algorithms for comparison
-- **Model Evaluation**: Accuracy, precision, recall, F1-score, ROC-AUC curves
-- **Hyperparameter Tuning**: Optimized parameters for each model
-- **Batch Predictions**: Process multiple patient records from CSV
-- **Real-time Predictions**: Interactive prediction interface
-- **Model Persistence**: Trained models saved for deployment
-- **Visualization**: ROC curves, confusion matrices, and performance plots
-
-## 📋 Dataset Information
-
-**Source:** UCI Machine Learning Repository - Wisconsin Diagnostic Breast Cancer (WDBC)
-
-**Samples:** 569 patient records
-**Features:** 30 computed features from cell nuclei measurements
-**Target:** Binary classification (Malignant/Benign)
-**Features Include:**
-- Radius, texture, perimeter, area
-- Smoothness, compactness, concavity
-- Symmetry, fractal dimension
-- And their mean, standard error, and worst values
-
-## 🔍 Key Files
-
-- `src/train.py` - Training pipeline for all models
-- `src/evaluate.py` - Model performance evaluation
-- `src/model.py` - Model definitions and utilities
-- `src/data_preprocessing.py` - Data cleaning and transformation
-- `full_dataset.csv` - Complete dataset used
-- `model_metrics_summary.csv` - Comparative metrics
-
-## 📊 Performance & Results
-
-All models achieve high accuracy (>95%) on the test set. The best performer is stored in `src/best_model.joblib`.
-
-View detailed metrics and visualizations in:
-- `reports/model_metrics_summary.csv`
-- `reports/figures/` (ROC curves, confusion matrices)
-
-## 🛠️ Usage Examples
-
-### Training a single model:
-```python
-from src.model import train_model
-from src.data_preprocessing import prepare_data
-
-X_train, X_test, y_train, y_test = prepare_data()
-model = train_model(X_train, y_train, model_type='random_forest')
-```
-
-### Making predictions:
-```python
-import joblib
-model = joblib.load('src/best_model.joblib')
-predictions = model.predict(X_test)
-```
-
-## 📝 Requirements
-
-See `requirements.txt` for all dependencies:
-- scikit-learn
-- pandas
-- numpy
-- matplotlib
-- seaborn
-- jupyter
-
-## 🤝 Contributing
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see LICENSE file for details.
-
-## ✉️ Contact & Support
-
-For questions, issues, or suggestions, please open an issue on GitHub.
-
-## 📚 References
-
-- UCI ML Repository: https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic
-- scikit-learn Documentation: https://scikit-learn.org/
-- Breast Cancer Detection Research
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 
 ---
 
-**Status:** ✅ Active
-**Last Updated:** April 2026
+## 📖 Overview
+
+This project wraps a pre-trained **Logistic Regression** model (97%+ accuracy) around the UCI Wisconsin Breast Cancer dataset into a modern full-stack web application. Users can:
+
+- **Single Prediction** — Enter 30 cell-nucleus features for instant diagnosis
+- **Batch Prediction** — Upload a CSV file for multiple patients at once
+- **History** — View all past prediction records (Supabase)
+- **Dashboard** — Summary stats, server status, and quick actions
+
+### ML Pipeline
+
+| Component | Details |
+|-----------|---------|
+| Dataset | UCI Wisconsin Diagnostic Breast Cancer (WDBC) |
+| Features | 30 cell-nucleus measurements (mean, SE, worst) |
+| Models trained | Logistic Regression, KNN, Random Forest, SVM, Decision Tree, Neural Network |
+| Best model | Logistic Regression (~97% accuracy) |
+| Scaler | StandardScaler (fitted on training split) |
+| Labels | 0 = Benign, 1 = Malignant |
+
+---
+
+## 🏗️ Project Structure
+
+```
+Breast-Cancer-Detector-App/
+├── backend/
+│   ├── main.py              # FastAPI server
+│   ├── requirements.txt     # Backend Python deps
+│   └── render.yaml          # Render.com deployment config
+├── frontend/
+│   ├── src/
+│   │   ├── components/      # Reusable UI components
+│   │   ├── pages/           # Dashboard, SinglePredict, BatchPredict, History
+│   │   ├── api.js           # API utility
+│   │   ├── App.jsx          # Root layout
+│   │   ├── main.jsx         # Entry point with router
+│   │   └── index.css        # Design system (Tailwind)
+│   ├── index.html
+│   ├── tailwind.config.js
+│   └── vite.config.js
+├── src/                     # Original ML pipeline
+│   ├── model.py             # Training script
+│   ├── best_model.joblib    # Pre-trained model
+│   ├── scaler.joblib        # Fitted StandardScaler
+│   └── predict_csv.py       # CLI batch predictor
+├── data/                    # Dataset files
+├── .env.example             # Environment variable template
+├── requirements.txt         # Root Python dependencies
+├── setup.bat                # Windows one-click setup
+└── README.md
+```
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- **Python 3.10+**
+- **Node.js 18+**
+- **Git**
+
+### Option A: One-click Setup (Windows)
+
+```bash
+git clone https://github.com/Breast-Cancer-Detector/Breast-Cancer-Detector-.git
+cd Breast-Cancer-Detector-
+setup.bat
+```
+
+### Option B: Manual Setup
+
+#### 1. Clone & Install Backend
+
+```bash
+git clone https://github.com/Breast-Cancer-Detector/Breast-Cancer-Detector-.git
+cd Breast-Cancer-Detector-
+
+# Create virtual environment
+python -m venv venv
+venv\Scripts\activate          # Windows
+# source venv/bin/activate     # macOS/Linux
+
+# Install dependencies
+pip install -r backend/requirements.txt
+```
+
+#### 2. Configure Environment
+
+```bash
+copy .env.example .env
+# Edit .env with your Supabase credentials (optional)
+```
+
+#### 3. Start Backend
+
+```bash
+cd backend
+uvicorn main:app --reload
+# Server runs at http://localhost:8000
+```
+
+#### 4. Install & Start Frontend
+
+```bash
+cd frontend
+npm install
+copy .env.example .env
+npm run dev
+# App runs at http://localhost:5173
+```
+
+---
+
+## 🗄️ Supabase Setup (Optional)
+
+History features require a Supabase database. If you don't need history, the app works fine without it.
+
+### 1. Create a Supabase Project
+Go to [supabase.com](https://supabase.com), create a new project.
+
+### 2. Run the SQL
+
+In the Supabase SQL Editor, run:
+
+```sql
+CREATE TABLE predictions (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+  patient_label TEXT,
+  diagnosis TEXT NOT NULL,
+  confidence FLOAT NOT NULL,
+  input_features JSONB
+);
+```
+
+### 3. Add Credentials to `.env`
+
+```env
+SUPABASE_URL=https://your-project-id.supabase.co
+SUPABASE_KEY=your-supabase-anon-key
+```
+
+---
+
+## 📡 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/health` | Server health check |
+| `GET` | `/features` | List of 30 expected feature names |
+| `POST` | `/predict` | Single prediction (30 features → diagnosis) |
+| `POST` | `/predict-batch` | Batch CSV prediction |
+| `GET` | `/history` | Fetch all saved predictions |
+| `POST` | `/history` | Save a prediction record |
+
+---
+
+## 🌐 Deployment
+
+### Backend → Render.com
+
+1. Push repo to GitHub
+2. Connect to Render, select the repo
+3. Use the `backend/render.yaml` blueprint
+4. Add `SUPABASE_URL` and `SUPABASE_KEY` as environment variables
+
+### Frontend → Vercel
+
+1. Import frontend folder to Vercel
+2. Set `VITE_API_URL` to your Render backend URL
+3. Deploy
+
+---
+
+## 🧪 Environment Variables
+
+| Variable | Where | Description |
+|----------|-------|-------------|
+| `SUPABASE_URL` | `.env` (root) | Supabase project URL |
+| `SUPABASE_KEY` | `.env` (root) | Supabase anon/public key |
+| `VITE_API_URL` | `frontend/.env` | Backend API URL (default: `http://localhost:8000`) |
+
+---
+
+## 📜 License
+
+This project is for educational purposes. The original ML pipeline is from the [Breast-Cancer-Detector](https://github.com/Breast-Cancer-Detector/Breast-Cancer-Detector-) repository.
