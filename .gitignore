@@ -4,11 +4,34 @@ __pycache__/
 
 # Virtual environment
 .venv/
+venv/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# Data folders (if you don’t want to track large files)
+# Data folders (if you don't want to track large files)
 data/raw/
 data/processed/
 
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Node.js
+node_modules/
+dist/
+.cache/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
